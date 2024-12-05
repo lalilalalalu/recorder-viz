@@ -1,9 +1,24 @@
 #!/usr/bin/env python
 # encoding: utf-8
-import sys
+import argparse
 import recorder_viz
 from recorder_viz import RecorderReader
 
 if __name__ == "__main__":
-    reader = RecorderReader(sys.argv[1])
-    recorder_viz.generate_report(reader, "recorder-report.html")
+    parser = argparse.ArgumentParser(description="Process trace data and generate a report.")
+    parser.add_argument(
+        "-i", "--input_path",
+        required=True,
+        type=str,
+        help="Path to the trace file to be processed."
+    )
+    parser.add_argument(
+        "-o", "--output_path",
+        required=True,
+        type=str,
+        help="Path to save the generated report."
+    )
+
+    args = parser.parse_args()
+    reader = RecorderReader(args.input_path)
+    recorder_viz.generate_report(reader, args.output_path)

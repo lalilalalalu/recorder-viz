@@ -12,6 +12,13 @@ Please see the document [here](https://recorder.readthedocs.io/latest/postproces
 Below are some example graphs generated from the [FLASH](http://flash.uchicago.edu) traces.
 ![example graphs](https://raw.githubusercontent.com/wangvsa/recorder-viz/main/tests/showoff.jpg)
 
+Usage
+-------------
+
+```shell
+recorder-report -i=path/to/trace -o=path/to/report
+```
+
 
 Advanced Usages
 -------------

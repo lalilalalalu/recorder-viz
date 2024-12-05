@@ -8,20 +8,21 @@ from bokeh.embed import components
 from bokeh.models import FixedTicker, ColumnDataSource, LabelSet
 from prettytable import PrettyTable
 
-# For distribution
+
 from .creader_wrapper import RecorderReader
 from .html_writer import HTMLWriter
 from .build_offset_intervals import ignore_files
 from .build_offset_intervals import build_offset_intervals
 
 
+
 # For local test
-'''
+"""
 from creader_wrapper import RecorderReader
 from html_writer import HTMLWriter
 from build_offset_intervals import ignore_files
 from build_offset_intervals import build_offset_intervals
-'''
+"""
 
 
 # 0.0
@@ -132,7 +133,7 @@ def function_patterns(all_intervals, htmlWriter):
 # 2.3
 def function_counts(reader, htmlWriter):
     func_list = reader.funcs
-    aggregate = np.zeros(256)
+    aggregate = np.zeros(2162)
     for LM in reader.LMs:
         aggregate += np.array(LM.function_count)
 
@@ -511,6 +512,23 @@ def generate_report(reader, output_path):
 
 
 if __name__ == "__main__":
-    import sys
-    reader = RecorderReader(sys.argv[1])
-    generate_report(reader, sys.argv[2])
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Process trace data and generate a report.")
+    parser.add_argument(
+        "-i", "--input_path",
+        required=True,
+        type=str,
+        help="Path to the trace file to be processed."
+    )
+    parser.add_argument(
+        "-o", "--output_path",
+        required=True,
+        type=str,
+        help="Path to save the generated report."
+    )
+
+    args = parser.parse_args()
+
+    reader = RecorderReader(args.input_path)
+    generate_report(reader, args.output_path)
