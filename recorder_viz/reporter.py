@@ -8,22 +8,21 @@ from bokeh.embed import components
 from bokeh.models import FixedTicker, ColumnDataSource, LabelSet
 from prettytable import PrettyTable
 
-"""
+
 from .creader_wrapper import RecorderReader
 from .html_writer import HTMLWriter
 from .build_offset_intervals import ignore_files
 from .build_offset_intervals import build_offset_intervals
-"""
 
 
 
 # For local test
-
+"""
 from creader_wrapper import RecorderReader
 from html_writer import HTMLWriter
 from build_offset_intervals import ignore_files
 from build_offset_intervals import build_offset_intervals
-
+"""
 
 
 # 0.0
@@ -531,6 +530,6 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    
+
     reader = RecorderReader(args.input_path)
     generate_report(reader, args.output_path)
