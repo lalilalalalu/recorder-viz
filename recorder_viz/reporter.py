@@ -8,21 +8,21 @@ from bokeh.embed import components
 from bokeh.models import FixedTicker, ColumnDataSource, LabelSet
 from prettytable import PrettyTable
 
-
+"""
 from .creader_wrapper import RecorderReader
 from .html_writer import HTMLWriter
 from .build_offset_intervals import ignore_files
 from .build_offset_intervals import build_offset_intervals
-
+"""
 
 
 # For local test
-"""
+
 from creader_wrapper import RecorderReader
 from html_writer import HTMLWriter
 from build_offset_intervals import ignore_files
 from build_offset_intervals import build_offset_intervals
-"""
+
 
 
 # 0.0
@@ -161,7 +161,7 @@ def function_counts(reader, htmlWriter):
 def function_times(reader, htmlWriter):
     func_list = reader.funcs
 
-    aggregate = np.zeros(256)
+    aggregate = np.zeros(2162)
     for rank in range(reader.GM.total_ranks):
         records = reader.records[rank]
         for i in range(reader.LMs[rank].total_records):
@@ -512,6 +512,7 @@ def generate_report(reader, output_path):
 
 
 if __name__ == "__main__":
+    """
     import argparse
 
     parser = argparse.ArgumentParser(description="Process trace data and generate a report.")
@@ -529,6 +530,6 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-
-    reader = RecorderReader(args.input_path)
-    generate_report(reader, args.output_path)
+    """
+    reader = RecorderReader("")
+    generate_report(reader, "")
